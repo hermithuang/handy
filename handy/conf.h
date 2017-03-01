@@ -6,7 +6,7 @@
 
 namespace handy {
 
-struct Conf {
+struct Conf {  //all public
     // 0 success
     // -1 IOERROR
     // >0 line no of error
@@ -30,10 +30,10 @@ struct Conf {
     bool getBoolean(std::string section, std::string name, bool default_value);
 
     // Get a string value from INI file, returning empty list if not found.
-    std::list<std::string> getStrings(std::string section, std::string name);
+    std::list<std::string> getStrings(std::string section, std::string name); //返回一个string list
 
-    std::map<std::string, std::list<std::string>> values_;
-    std::string filename;
+    std::map<std::string, std::list<std::string>> values_;  //conf=value1 value2 value3 成员
+    std::string filename;          //conf file name
 };
 
 }
