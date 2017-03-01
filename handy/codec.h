@@ -3,7 +3,7 @@
 #include "net.h"
 namespace handy {     //自己的命名空间
 
-struct CodecBase {
+struct CodecBase {          //消息的拼装和解开过程
     // > 0 解析出完整消息，消息放在msg中，返回已扫描的字节数     //return value
     // == 0 解析部分消息
     // < 0 解析错误

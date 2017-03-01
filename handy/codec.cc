@@ -42,7 +42,7 @@ int LengthCodec::tryDecode(Slice data, Slice& msg) {
 }
 void LengthCodec::encode(Slice msg, Buffer& buf) {   //这种加了个前缀，隔开各种slice
     buf.append("mBdT").appendValue(net::hton((int32_t)msg.size())).append(msg);
-}      //hton，主机字节序到网络字节序，长4，存msg的长度
+}      //hton，主机字节序到网络字节序，长4，存msg的长度，一个技巧，避开了字节序问题
 
 
 }
