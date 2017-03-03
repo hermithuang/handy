@@ -8,12 +8,12 @@
 
 namespace handy {
 
-struct noncopyable {
+struct noncopyable {  //复制就会把老的删除，=也一样,只能move不能copy
     noncopyable() {};
     noncopyable(const noncopyable&) = delete;
     noncopyable& operator=(const noncopyable&) = delete;
 };
-
+//util就是一些乱七八糟的工具
 struct util {
     static std::string format(const char* fmt, ...);
     static int64_t timeMicro();
@@ -31,7 +31,7 @@ struct util {
     static int addFdFlag(int fd, int flag);
 };
 
-struct ExitCaller: private noncopyable {
+struct ExitCaller: private noncopyable { //这个也是个ExitCaller
     ~ExitCaller() { functor_(); }
     ExitCaller(std::function<void()>&& functor): functor_(std::move(functor)) {}
 private:

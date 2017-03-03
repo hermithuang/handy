@@ -2,9 +2,9 @@
 #include <netinet/in.h>
 #include <string>
 namespace handy {
-    namespace port {
+    namespace port {   //再建一个namespace 把大小端相关处理定义下
         static const int kLittleEndian = LITTLE_ENDIAN;
-        inline uint16_t htobe(uint16_t v) {
+        inline uint16_t htobe(uint16_t v) {  //to big_endian 重载一下，各种类型的转换
             if (!kLittleEndian) {
                 return v;
             }

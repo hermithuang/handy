@@ -44,24 +44,24 @@ string util::format(const char* fmt, ...) {
     }
     return base;
 }
-
-int64_t util::timeMicro() {
+//chrono是 c++11的库 std::chrono
+int64_t util::timeMicro() {  //ms计时
     chrono::time_point<chrono::system_clock> p = chrono::system_clock::now();
     return chrono::duration_cast<chrono::microseconds>(p.time_since_epoch()).count();
 }
-int64_t util::steadyMicro() {
+int64_t util::steadyMicro() { //这个是算时间间隔的 ms
     chrono::time_point<chrono::steady_clock> p = chrono::steady_clock::now();
     return chrono::duration_cast<chrono::microseconds>(p.time_since_epoch()).count();
 }
 
-std::string util::readableTime(time_t t) {
+std::string util::readableTime(time_t t) { //time_t到字符串
     struct tm tm1;
     localtime_r(&t, &tm1);
     return format("%04d-%02d-%02d %02d:%02d:%02d",
         tm1.tm_year+1900, tm1.tm_mon+1, tm1.tm_mday, tm1.tm_hour, tm1.tm_min, tm1.tm_sec);
 }
 
-int util::addFdFlag(int fd, int flag) {
+int util::addFdFlag(int fd, int flag) { //给某个fd加个属性
     int ret = fcntl(fd, F_GETFD);
     return fcntl(fd, F_SETFD, ret | flag);
 }
