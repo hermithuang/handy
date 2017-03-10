@@ -17,7 +17,7 @@ struct IdleIdImp;
 struct EventsImp;
 struct EventBase;
 typedef std::unique_ptr<IdleIdImp> IdleId;
-typedef std::pair<int64_t, int64_t> TimerId;
+typedef std::pair<int64_t, int64_t> TimerId;  //一个时间对
 
 struct AutoContext: noncopyable {
     void* ctx;

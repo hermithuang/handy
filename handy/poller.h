@@ -11,9 +11,9 @@
 
 namespace handy {
 
-const int kMaxEvents = 2000;
-const int kReadEvent = POLLIN;
-const int kWriteEvent = POLLOUT;
+const int kMaxEvents = 2000;   //最大事件
+const int kReadEvent = POLLIN;  //有数据可读
+const int kWriteEvent = POLLOUT; //写数据不会导致阻塞
 
 struct PollerBase: private noncopyable {
     int64_t id_;
